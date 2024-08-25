@@ -1,31 +1,31 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
+
+# 设置环境变量以避免交互式提示
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 更新和安装必要的软件包
 RUN apt-get update \
-    && apt-get -y install sudo
-RUN sudo apt-get -y install \
+    && apt-get -y install sudo \
+    && sudo apt-get -y install \
     curl \
-    python-software-properties \
-    # Must have this line for "add-apt-repository" to work
-    software-properties-common
+    software-properties-common \
+    python3.8 \
+    python3-pip \
+    && curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - \
+    && sudo apt-get install -y nodejs \
+    && npm install -g npm@latest \
+    && python3.8 -m pip install tensorspacejs \
+    && echo "alias python=python3.8" >> ~/.bash_aliases \
+    && . ~/.bash_aliases \
+    && tensorspacejs_converter -init \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-RUN sudo apt-get install -y nodejs
-RUN npm install npm@latest
-
-# install python
-RUN sudo add-apt-repository ppa:jonathonf/python-3.6
-RUN apt-get update
-RUN sudo apt-get -y install python3.6
-RUN sudo apt-get -y install python3-pip
-
-# install tensorspacejs
-RUN python3.6 -m pip install tensorspacejs
-RUN echo "alias python=python3.6" >> ~/.bash_aliases
-RUN . ~/.bash_aliases
-
-# initalize tensorspacejs
-RUN tensorspacejs_converter -init
-
+# 设置工作目录
 WORKDIR /data
 
+# 复制项目文件
+COPY . /data
+
+# 设置默认命令
 CMD ["bash", "/data/converter.sh"]
