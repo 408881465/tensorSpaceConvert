@@ -10,7 +10,7 @@ RUN sudo apt-get -y install \
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
-RUN npm install npm@latest
+#RUN npm install npm@latest
 
 # install python
 RUN sudo add-apt-repository ppa:jonathonf/python-3.6
