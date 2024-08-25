@@ -28,4 +28,4 @@ RUN tensorspacejs_converter -init
 
 WORKDIR /data
 
-CMD ["bash", "/data/converter.sh"]
+#CMD ["bash", "/data/converter.sh"]
