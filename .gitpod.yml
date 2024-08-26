@@ -3,8 +3,8 @@ image:
 
 tasks:
   - init: |
-      pip install   tensorFlow==1.9.0  tensorflowjs==0.8.0   tensorspacejs
-      #pip install -r "requirements.txt"
+      pip install   tensorFlow==1.9.0  tensorflowjs==0.8.0  
+      
       echo "Installed Python packages!"
 
 
