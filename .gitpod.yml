@@ -7,8 +7,6 @@ tasks:
       #pip install -r "requirements.txt"
       echo "Installed Python packages!"
 
-  - command: |
-      #pip install -r "requirements.txt";
-      echo "Ready to code!"
+
 
 
