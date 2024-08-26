@@ -7,6 +7,8 @@ ENV TZ=Etc/UTC
 # 更新和安装必要的软件包
 RUN apt-get update \
     && apt-get -y install sudo \
+    && ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
     && sudo apt-get -y install \
     curl \
     software-properties-common \
@@ -27,7 +29,7 @@ RUN apt-get update \
 WORKDIR /data
 
 # 复制项目文件
-COPY . /data
+#COPY . /data
 
 # 设置默认命令
-CMD ["bash", "/data/converter.sh"]
+#CMD ["bash", "/data/converter.sh"]
