@@ -3,7 +3,7 @@ image:
 
 tasks:
   - init: |
-      pip install     tensorflowjs==0.8.0  tensorspacejs
+      pip install   tensorspacejs
       
       echo "Installed Python packages!"
 
