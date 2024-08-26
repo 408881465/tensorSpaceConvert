@@ -2,5 +2,13 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm ci
-    command: npm start
+  - init: |
+      pip install   tensorFlow==1.9.0  tensorflowjs==0.8.0   tensorspacejs
+      #pip install -r "requirements.txt"
+      echo "Installed Python packages!"
+
+  - command: |
+      #pip install -r "requirements.txt";
+      echo "Ready to code!"
+
+
