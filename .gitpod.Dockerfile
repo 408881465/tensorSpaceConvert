@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 
 # 设置环境变量以避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
 
 # 更新和安装必要的软件包
 RUN apt-get update \
@@ -9,6 +10,7 @@ RUN apt-get update \
     && sudo apt-get -y install \
     curl \
     software-properties-common \
+    tzdata \
     python3.8 \
     python3-pip \
     && curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - \
